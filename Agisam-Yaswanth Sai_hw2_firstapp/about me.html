@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <style>
+        /* Your CSS styles go here */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        header {
+            background-color: #9dc956;
+            color: #3300ff;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        nav {
+            background-color: #df7f7f;
+            color: #000000;
+            width: 200px;
+            padding: 10px;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        #image-container {
+            text-align: right;
+        }
+        /* Hide content by default */
+        .hidden {
+            display: none;
+        }
+        img {
+            max-width: 40%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Web Page</h1>
+    </header>
+    <nav>
+        <h2>Contents</h2>
+        <form>
+            <input type="radio" name="content" value="education" id="education-radio">
+            <label for="education-radio">Education</label><br>
+            <input type="radio" name="content" value="aboutme" id="aboutme-radio">
+            <label for="aboutme-radio">About Me</label><br>
+            <input type="radio" name="content" value="hobbies" id="hobbies-radio">
+            <label for="hobbies-radio">Hobbies</label><br>
+        </form>
+    </nav>
+    <main>
+        <div id="image-container">
+            <img src="profile.jpg" alt="Yaswanth Sai Agisam">
+        </div>
+        <div id="content-education" class="hidden">
+            <h2>Education</h2>
+            <ul>
+                <li>Bachelor's Degree in Electronics and Communication Engineering</li>
+                <li>Master's Degree in Computer Science</li>
+            </ul>
+        </div>
+        <div id="content-aboutme" class="hidden">
+            <h2>About Me</h2>
+            <p>I am Yaswanth Sai Agisam. I am currently pursuing my master's degree in Computer Science at the University of Massachusetts Lowell.</p>
+        </div>
+        <div id="content-hobbies" class="hidden">
+            <h2>Hobbies</h2>
+            <ol>
+                <li>Listening to Music</li>
+                <li>Watching Movies</li>
+                <li>Playing Badminton</li>
+            </ol>
+        </div>
+    </main>
+    <script>
+        // JavaScript to toggle content when a radio button is clicked
+        const educationRadio = document.getElementById("education-radio");
+        const aboutMeRadio = document.getElementById("aboutme-radio");
+        const hobbiesRadio = document.getElementById("hobbies-radio");
+
+        const educationContent = document.getElementById("content-education");
+        const aboutMeContent = document.getElementById("content-aboutme");
+        const hobbiesContent = document.getElementById("content-hobbies");
+
+        educationRadio.addEventListener("click", function () {
+            // Show the Education content, hide others
+            educationContent.classList.remove("hidden");
+            aboutMeContent.classList.add("hidden");
+            hobbiesContent.classList.add("hidden");
+
+            // Change background color of the body
+            document.body.style.backgroundColor = "#808080"; // Change to the desired color
+        });
+
+        aboutMeRadio.addEventListener("click", function () {
+            // Show the About Me content, hide others
+            educationContent.classList.add("hidden");
+            aboutMeContent.classList.remove("hidden");
+            hobbiesContent.classList.add("hidden");
+
+            // Change background color of the body
+            document.body.style.backgroundColor = "#FFFF99"; // Change to the desired color
+        });
+
+        hobbiesRadio.addEventListener("click", function () {
+            // Show the Hobbies content, hide others
+            educationContent.classList.add("hidden");
+            aboutMeContent.classList.add("hidden");
+            hobbiesContent.classList.remove("hidden");
+
+            // Change background color of the body
+            document.body.style.backgroundColor = "#999900"; // Change to the desired color
+        });
+    </script>
+</body>
+</html>
