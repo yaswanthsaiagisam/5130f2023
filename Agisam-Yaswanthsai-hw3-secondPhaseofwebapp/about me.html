@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Your CSS styles go here */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        header {
+            background-color: #9dc956;
+            color: #3300ff;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        nav {
+            background-color: #df7f7f;
+            color: #000000;
+            width: 200px;
+            padding: 10px;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        #image-container {
+            text-align: right;
+        }
+        /* Hide content by default */
+        .hidden {
+            display: none;
+        }
+        img {
+            max-width: 40%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Web Page</h1>
+    </header>
+    <nav>
+        <h2>Navigation</h2>
+        <form>
+            <input type="radio" name="content" value="education" id="education-radio">
+            <label for="education-radio">Education</label><br>
+            <input type="radio" name="content" value="aboutme" id="aboutme-radio">
+            <label for="aboutme-radio">About Me</label><br>
+            <input type="radio" name="content" value="hobbies" id="hobbies-radio">
+            <label for="hobbies-radio">Hobbies</label><br>
+            <input type="radio" name="content" value="investmentdistribution" id="investmentdistribution-radio">
+            <label for="investmentdistribution-radio">My Investment Distribution</label><br>
+            <input type="radio" name="content" value="fun-facts" id="fun-facts-radio">
+            <label for="fun-facts-radio">Fun Facts</label><br>
+        </form>
+    </nav>
+    <main>
+        <div id="image-container">
+            <img src="profile.jpg" alt="Yaswanth Sai Agisam">
+        </div>
+        <div id="content-education" class="hidden">
+            <h2>Education</h2>
+            <ul>
+                <li>Bachelor's Degree in Electronics and Communication Engineering</li>
+                <li>Master's Degree in Computer Science</li>
+            </ul>
+        </div>
+        <div id="content-aboutme" class="hidden">
+            <h2>About Me</h2>
+            <p>I am Yaswanth Sai Agisam. I am currently pursuing my master's degree in Computer Science at the University of Massachusetts Lowell.</p>
+        </div>
+        <div id="content-hobbies" class="hidden">
+            <h2>Hobbies</h2>
+            <ol>
+                <li>Listening to Music</li>
+                <li>Watching Movies</li>
+                <li>Playing Badminton</li>
+            </ol>
+        </div>
+        <div id="content-fun-facts" class="hidden">
+            <h2>Fun Facts</h2>
+            <div id="fun-fact-display"></div>
+            <button onclick="displayRandomFunFact()">Show Fun Fact</button>
+        </div>
+        <!-- Add the "Download PDF" link here -->
+        <a href="uploads/Yaswanth Resume.pdf" download> Yaswanth Resume</a>
+        
+        <div id="investmentdistribution" class="hidden">
+            <h2>My Investment Distribution</h2>
+            <p>How my amount was distributed = $8000</p>
+            <canvas id="investmentChart" width="100" height="100"></canvas>
+        </div>
+
+        <form method="POST" action="connection.php">
+            <h2>User Information</h2>
+            <ul>
+                <li>
+                    <label for="currentlocation">My current location?</label><br>
+                    <input type="text" id="currentlocation" placeholder="Enter your current location" name="currentlocation" required><br>
+                </li>
+                <li>
+                    <label for="nativeplace">I am from</label><br>
+                    <input type="text" id="nativeplace" placeholder="Which place you are from" name="nativeplace" required><br>
+                </li>
+                <li>
+                    <label for="dreamplace">I'd like to be in</label><br>
+                    <input type="text" id="dreamplace" placeholder="I'd like to be in" name="dreamplace" required><br><br>
+                </li>
+                <li>
+                    <label for="familylocation">My family is from</label><br>
+                    <input type="text" id="familylocation" placeholder="Your family is from" name="familylocation" required><br><br>
+                </li>
+                <li>
+                    <label for="mobile">Contact Number</label><br>
+                    <input type="number" id="mobile" placeholder="Mobile no" name="mobile" required><br><br>
+                </li>
+                    
+            </ul>
+            <h2>Investments</h2>
+            <ul>
+                <li>
+                    <label for="mine">Mine</label><br>
+                    <input type="number" id="mine" placeholder=" Your Investment" name="mine" required><br>
+                </li>
+                <li>
+                    <label for="family">Family</label><br>
+                    <input type="number" id="family" placeholder="Your family's investment" name="family" required><br>
+                </li>
+                <li>
+                    <label for="anyone">Anyone else</label><br>
+                    <input type="number" id="anyone" placeholder="Anyone's investment" name="anyone"><br><br>
+                </li>
+            </ul>       
+            
+            <h2>Upload your Resume</h2>
+            <input type="file" id="myFile" name="resume">
+            
+            <h2>Facts about you</h2>
+            <ul>
+                <li>
+                    <label for="hobbies">Hobbies</label><br>
+                    <input type="text" id="hobbies" placeholder=" What are your Hobbies" name="hobbies" required><br>
+                </li>
+                <li>
+                    <label for="Your social media username">Socialmedia Username</label><br>
+                    <input type="text" id="socialmedia" placeholder="What is your social media username" name="socialmedia" required><br>
+                </li>
+                <li>
+                    <label for="conte">Content you watch on Socialmedia</label><br>
+                    <input type="text" id="conte" placeholder="What type of content you love to watch on Socialmedia" name="conte"><br><br>
+                </li>
+            </ul>  
+            <input type="submit" id="button" name="Submit">
+            
+        </form>
+        
+    </main>
+    
+    <script>
+        const funFacts = [
+                "I can speak three languages fluently.",
+                "I love to travel different countries and learn their culture.",
+                "I once won a debate competition.",
+                // Add more fun facts here
+            ];
+        // JavaScript to toggle content when a radio button is clicked
+        const educationRadio = document.getElementById("education-radio");
+        const aboutMeRadio = document.getElementById("aboutme-radio");
+        const hobbiesRadio = document.getElementById("hobbies-radio");
+        const funFactsRadio = document.getElementById("fun-facts-radio");
+        const investmentdistributionRadio = document.getElementById("investmentdistribution-radio");
+
+        const educationContent = document.getElementById("content-education");
+        const aboutMeContent = document.getElementById("content-aboutme");
+        const hobbiesContent = document.getElementById("content-hobbies");
+        const funFactsContent = document.getElementById("content-fun-facts");
+        const investmentdistributionContent = document.getElementById("investmentdistribution");
+
+        educationRadio.addEventListener("click", toggleEducationContent);
+        aboutMeRadio.addEventListener("click", toggleAboutMeContent);
+        hobbiesRadio.addEventListener("click", toggleHobbiesContent);
+        funFactsRadio.addEventListener("click", toggleFunFactsContent);
+        investmentdistributionRadio.addEventListener("click", toggleInvestmentdistributionContent);
+
+        function toggleEducationContent() {
+            hideAllContent();
+            educationContent.classList.remove("hidden");
+        }
+
+        function toggleAboutMeContent() {
+            hideAllContent();
+            aboutMeContent.classList.remove("hidden");
+        }
+
+        function toggleHobbiesContent() {
+            hideAllContent();
+            hobbiesContent.classList.remove("hidden");
+        }
+
+        function toggleFunFactsContent() {
+                hideAllContent();
+                funFactsContent.classList.remove("hidden");
+        }
+
+        function toggleInvestmentdistributionContent() {
+            hideAllContent();
+            investmentdistributionContent.classList.remove("hidden");
+        }
+
+        function hideAllContent() {
+            educationContent.classList.add("hidden");
+            aboutMeContent.classList.add("hidden");
+            hobbiesContent.classList.add("hidden");
+            funFactsContent.classList.add("hidden");
+            investmentdistributionContent.classList.add("hidden");
+        }
+
+        function displayRandomFunFact() {
+                const randomIndex = Math.floor(Math.random() * funFacts.length);
+                const funFact = funFacts[randomIndex];
+                document.getElementById("fun-fact-display").textContent = `Did you know? ${funFact}`;
+        }
+
+        // Initialize Chart.js
+        const ctx = document.getElementById('investmentChart').getContext('2d');
+        const myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Education', 'Transport', 'Food', 'Houserent', 'Savings'],
+                datasets: [{
+                    data: [1000, 1500, 1000, 3000, 2500],
+                    backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange'],
+                }],
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+            },
+        });
+    </script>
+</body>
+</html>
+
+
