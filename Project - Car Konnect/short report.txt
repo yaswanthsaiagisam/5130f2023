@@ -1,0 +1,11 @@
+Our project has the potential to address the current issue that many students, as well as those seeking to purchase cars at a lower cost, are facing.The goal of an automobile owner is to sell their vehicle for a higher price.
+A buyer of a car would prefer to have more options.
+
+ The aim of our website is to purchase cars at a lower cost. along with a clean record and good condition. 
+
+To do this, we developed a quotation entry form that allows users to provide some basic information about themselves and their vehicle and receive an estimate for it.
+We came up with the concept of allowing users to sell their cars in three easy steps: quote, bid, and sell. Eventually, we added these stBecause this was a team project, we found it simple to manage the HTML, CSS, and JavaScript we used to create our webpage.
+
+When building our website, we considered a few different strategies. Initially, we considered utilizing MySQL, but it is difficult for the website to access MySQL. As a result, we used Google Firebase to store all of the data on our webpage.
+
+Since many websites offer standard automotive services, such as buying and selling, our strategy is to provide customers with a high-quality and valuable vehicle. Additionally, we believe that this is a new feature on our website because we have added an additional option to bid on cars if one or more people are interested in them.eps to the sell page.
