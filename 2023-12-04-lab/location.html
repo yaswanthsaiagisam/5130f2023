@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>User location</h1>
+    <p>Click the button to get your coordinates.</p>
+    <label for="verification_code">Verification Code:</label>
+        <input type="text" id="verification_code" name="verification_code" required>
+        <br>
+        <label for="verified">Verified:</label>
+        <input type="verified" id="verified" name="verified" required>
+        <br>
+        <label for="userlocation">User Location:</label>
+        <input type="userlocation" id="userlocation" name="userlocation" required>
+        <br>
+        <label for="weather">User weather:</label>
+        <input type="weather" id="weather" name="weather" required>
+        <br>
+        <label for="currency">User's currency:</label>
+        <input type="currency" id="currency" name="currency" required>
+        <br>
+        <label for="language">User's language:</label>
+        <input type="language" id="language" name="language" required>
+        <br>
+
+    <button onclick="getLocation()">Try It</button>
+
+    <p id="demo"></p>
+
+    <div id="map" style="height: 400px; width: 100%;"></div>
+
+    <script>
+        const x = document.getElementById("demo");
+        let map;
+        let marker;
+
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            const geocoder = new google.maps.Geocoder();
+            const latLng = new google.maps.LatLng(latitude, longitude);
+
+            geocoder.geocode({ 'latLng': latLng }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        const locationName = results[0].formatted_address;
+                        x.innerHTML = `Latitude: ${latitude}<br>Longitude: ${longitude}<br>Location: ${locationName}`;
+                    } else {
+                        x.innerHTML = "Location not found";
+                    }
+                } else {
+                    x.innerHTML = "Geocoder failed due to: " + status;
+                }
+            });
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred.";
+                    break;
+            }
+        }
+    </script>
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwr2Bjf2AGopWmlfmz5Dm3tV0qDKe_JoU">
+    </script>
+</body>
+
+</html>
